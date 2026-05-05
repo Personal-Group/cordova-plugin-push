@@ -50,8 +50,6 @@
 
 @implementation PushPlugin
 
-@synthesize callbackId;
-
 - (void)pluginInitialize {
 //     self.pushPluginFCM = [[PushPluginFCM alloc] initWithGoogleServicePlist];
 // 
@@ -395,8 +393,8 @@
     UNNotificationPresentationOptions presentationOption = UNNotificationPresentationOptionNone;
 
     if(self.forceShow) {
-        if (@available(iOS 10, *)) {
-            presentationOption = UNNotificationPresentationOptionAlert;
+        if (@available(iOS 14, *)) {
+            presentationOption = UNNotificationPresentationOptionList | UNNotificationPresentationOptionBanner;
         }
     } else {
         [self notificationReceived];
@@ -824,7 +822,6 @@
             case UNAuthorizationStatusProvisional:
                 completionHandler(YES);
                 break;
-            }
             default:
             {
                 NSError *error = [NSError errorWithDomain:@"PushPlugin" code:2 userInfo:nil];

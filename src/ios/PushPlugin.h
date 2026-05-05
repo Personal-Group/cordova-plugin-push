@@ -29,7 +29,7 @@
 #import <Cordova/CDVPlugin.h>
 #import <PushKit/PushKit.h>
 
-@interface PushPlugin : CDVPlugin
+@interface PushPlugin : CDVPlugin <PKPushRegistryDelegate>
 
 @property (nonatomic, copy) NSString *callbackId;
 
